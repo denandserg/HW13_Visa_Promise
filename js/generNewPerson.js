@@ -1,6 +1,6 @@
 let countPerson = 0;
 let quantityPerson = 2;
-const persons = [];
+let persons = [];
 
 const inpName = document.getElementById("name");
 const inpAge = document.getElementById("age");
@@ -10,31 +10,32 @@ const inpPayment = document.getElementById("payment");
 const inpHealth = document.getElementById("health");
 const inpQuantity = document.getElementById("quantity");
 
-function CreateOptionPerson () {
-    this.name = inpName.value;
-    this.age = inpAge.value;
-    this.isHasPassport = inpPasport.value;
-    this.gender = inpGender.value;
-    this.payment = inpPayment.value;
-    this.health = inpHealth.value;
-    this.quantityPerson = +inpQuantity.value;
+function verifyData () {
+  quantityPerson = inpQuantity.value;
 }
 
-function createNewTeam () {
-    const currentOptions = new CreateOptionPerson();
-    quantityPerson = currentOptions.quantityPerson;
-    persons.length = 0;
-    let i = 0;
-    while (i<quantityPerson) {
-        if (i===0) {
-          persons.push(new Person(currentOptions.name, currentOptions.age, currentOptions.isHasPassport, currentOptions.gender, currentOptions.payment, currentOptions.health));
-          i++;
-        } else {
-          persons.push(new Person());
-          i++;
-        }
-
+function checkPersonsManual () {
+    quantityPerson = inpQuantity.value;
+    const arrName = inpName.value.split(', ') || inpName.value;
+    const arrAge = inpAge.value.split(', ') || inpAge.value;
+    const arrPassport = inpPasport.value.split(', ') || inpPasport.value;
+    const arrGender = inpGender.value.split(', ') || inpGender.value;
+    const arrPayment = inpPayment.value.split(', ') || inpPayment.value;
+    const arrHealth = inpHealth.value.split(', ') || inpHealth.value;
+    checkArrLength(arrName, arrAge, arrPassport, arrGender, arrPayment, arrHealth);
+    let countPerson = 0;
+    while (countPerson < quantityPerson) {
+        persons.push(new Person(arrName[countPerson], arrAge[countPerson], arrPassport[countPerson], arrGender[countPerson], arrPayment[countPerson], arrHealth[countPerson]));
+        countPerson++;
     }
+}
+
+function checkArrLength () {
+  for(let i=0; i < arguments.length; i++) {
+    while (arguments[i].length < +quantityPerson)  {
+      arguments[i].push(undefined);
+    }
+  }
 }
 
 function Person (name, age, isHasPassport, gender, payment, healthy) {
@@ -45,6 +46,7 @@ function Person (name, age, isHasPassport, gender, payment, healthy) {
     this.gender = gender || this.setGender();
     this.payment = payment || this.setPayment();
     this.health = healthy || this.setHealth();
+    this.check = 0;
 }
 
 Person.prototype.setID = function () {

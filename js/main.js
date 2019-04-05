@@ -7,84 +7,97 @@ const rowMedecin = document.getElementById('rowMedecin');
 const rowBank = document.getElementById('rowBank');
 const rowDecision = document.getElementById('rowDecision');
 
+
+
 function findName(array, value) {
     if (array.indexOf) {
-      return array.indexOf(value);
+        return array.indexOf(value);
     }
     for (let i = 0; i < array.length; i++) {
-      if (array[i] === value) return i;
+        if (array[i] === value) return i;
     }
     return -1;
 }
 
 function checkNamePerson(arr) {
     for (let i = 0; i < arr.length; i++) {
-      createElem(arr[i].name, rowNamePerson, 'check-name', `name_${arr[i].id}`, true);
-       if(findName(arrPersonName, arr[i].name) === -1) {
-        arrPersonName.push(arr[i].name);
-       } else {
-           deniedNamePerson = arr[i].name;
-           return false;
-       }
+        createElem(arr[i].name, rowNamePerson);
+        if(findName(arrPersonName, arr[i].name) === -1) {
+            arrPersonName.push(arr[i].name);
+        } else {
+            deniedNamePerson = arr[i].name;
+            return false;
+        }
     }
     return true;
 }
 
-function createElem (text, parentElement, classs, id, flag) {
+function createElem (text, parentElement, classs, id) {
     const divElem = document.createElement('div');
     divElem.id = id;
-    divElem.innerHTML = `<span id="span_${id}" class="${classs}" data-flag="${flag}">${text}</span>`;
+    divElem.innerHTML = `<span id="${id}" class="${classs}">${text}</span>`;
     parentElement.appendChild(divElem);
 }
 
-function createElemVisa (text, parentElement, classs, id, flag) {
-  const divElem = document.createElement('div');
-  divElem.id = id;
-  divElem.innerHTML = `<span id="span_${id}" class="${classs}" data-flag="${flag}">${text}</span>`;
-  parentElement.appendChild(divElem);
+function createElemb (parentElement,id) {
+    const divElem = document.createElement('div');
+    divElem.id = id;
+    parentElement.appendChild(divElem);
 }
 
-function createElemPolice1 (text, parentElement, classs, id, flag) {
-  const divElem = document.createElement('div');
-  divElem.id = id;
-  divElem.innerHTML = `<span id="span_1_${id}" class="${classs}" data-flag="${flag}">${text}</span>`;
-  parentElement.appendChild(divElem);
+function createElemBank (text, classs, id, idEl) {
+    const spanElem = document.createElement('span');
+    spanElem.classList.add(classs);
+    spanElem.innerHTML = text;
+    spanElem.id = idEl;
+    document.getElementById(`bank_${id}`).appendChild(spanElem);
 }
 
-function createElemPolice2 (text, classs, id, flag, count) {
-  const spanElem = document.createElement('span');
-  spanElem.classList.add(classs);
-  spanElem.id = `span_${count}_${id}`;
-  spanElem.innerHTML = text;
-  spanElem.dataset.flag = flag;
-  document.getElementById(`${id}`).appendChild(spanElem);
+function createElemVisa (text, parentElement, classs, id) {
+    const divElem = document.createElement('div');
+    divElem.id = id;
+    divElem.innerHTML = `<span id="${id}" class="${classs}">${text}</span>`;
+    parentElement.appendChild(divElem);
 }
 
-function createElemMedical1 (text, parentElement, classs, id, flag) {
-  const divElem = document.createElement('div');
-  divElem.id = id;
-  divElem.innerHTML = `<span id="span_1_${id}" class="${classs}" data-flag="${flag}">${text}</span>`;
-  parentElement.appendChild(divElem);
+function createElemPolice1 (parentElement,  id) {
+    const divElem = document.createElement('div');
+    divElem.id = id;
+    parentElement.appendChild(divElem);
 }
 
-function createElemMedical2 (text, classs, id, flag) {
-  const spanElem = document.createElement('span');
-  spanElem.classList.add(classs);
-  spanElem.innerHTML = text;
-  spanElem.id = `span_2_${id}`;
-  spanElem.dataset.flag = flag;
-  document.getElementById(`${id}`).appendChild(spanElem);
+function createElemPolice2 (text, classs, id, idEl) {
+    const spanElem = document.createElement('span');
+    spanElem.classList.add(classs);
+    spanElem.innerHTML = text;
+    spanElem.id = idEl;
+    document.getElementById(`police_${id}`).appendChild(spanElem);
 }
+
+function createElemMedical1 (parentElement, id) {
+    const divElem = document.createElement('div');
+    divElem.id = id;
+    parentElement.appendChild(divElem);
+}
+
+function createElemMedical2 (text, classs, id, idElem) {
+    const spanElem = document.createElement('span');
+    spanElem.classList.add(classs);
+    spanElem.innerHTML = text;
+    spanElem.id = idElem;
+    document.getElementById(`medicine_${id}`).appendChild(spanElem);
+}
+
 
 function migrationService(arr) {
     return new Promise((resolve, reject) => {
         if (checkNamePerson(arr)) {
-          for (let i = 0; i < arr.length; i++) {
-            createElem('yes', rowMigService, 'check', `verify_${arr[i].id}`, true);
-            console.log('Name verify');
-            resolve(arr);
-        } }else {
-          createElem('no', rowMigService, 'check-no', false);
+            for (let i = 0; i < arr.length; i++) {
+                createElem('yes', rowMigService, 'check');
+                console.log('Name verify');
+                resolve(arr);
+            } }else {
+            createElem('no', rowMigService, 'check-no');
             reject(`Person '${deniedNamePerson}' has already applied for validation`);
         }
     });

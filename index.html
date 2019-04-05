@@ -11,22 +11,22 @@
 <body>
 <div class="data">
     <div>
-        <h2>Person</h2>
-        <form onsubmit="createNewTeam(); return false;" class="person">
+        <h2>Config for create persons</h2>
+        <form onsubmit="verifyData(); return false;" class="person">
             <input id="name" type="text" placeholder="Name">
-            <input id="age" type="number" placeholder="Age">
+            <input id="age" type="text" placeholder="Age">
             <input id="gender" type="text" placeholder="Gender">
             <input id="passport" type="text" placeholder="Passport">
-            <input id="payment" type="number" placeholder="Payment">
+            <input id="payment" type="text" placeholder="Payment">
             <input id="health" type="text" placeholder="Health">
-            <input id="quantity" type="text" placeholder="Config for create persons">
+            <input id="quantity" min="2" max="5" type="number" placeholder="Number of person" value="2">
             <button>Submit</button>
         </form>
     </div>
 
 
     <div>
-        <h2>Configurations</h2>
+        <h2>Configurations for validation</h2>
         <form onsubmit="setConfig(); return false;" class="configurations">
             <div class="police__configurations">
                 <h3>Police</h3>
@@ -45,31 +45,12 @@
                 <input id="minPaymantMale" type="text" placeholder="Enter min payment for male">
                 <input id="minPaymantFemale" type="text" placeholder="Enter min payment for female">
             </div>
+            <div class="new-str"></div>
             <button>Submit</button>
         </form>
     </div>
 
 </div>
-<button id="startAll" class="start">Get Visa For All</button>
-<div class="instances">
-    <div class="arrow"></div>
-    <div class="circle"></div>
-    <div class="arrow"></div>
-    <div class="circle"></div>
-    <div class="arrow"></div>
-    <div class="circle"></div>
-    <div class="arrow"></div>
-    <div class="circle"></div>
-    <div class="arrow"></div>
-    <div class="circle"></div>
-    <div class="arrow"></div>
-    <div class="circle"></div>
-    <div class="arrow"></div>
-    <div class="circle"></div>
-    <div class="arrow"></div>
-    <div class="circle"></div>
-</div>
-
 <div class="table">
     <div id="rowNamePerson" class="namePerson">
         <h3>Name Person</h3>
@@ -100,12 +81,13 @@
         <!--<div><span class="check">yes</span></div>-->
     </div>
 </div>
+<button id="startAll" class="start">Get Visa For All</button>
+<button id="reset" class="start">Reset</button>
 
 <script src="./js/faker.js"></script>
 <script src="./js/generNewPerson.js"></script>
 <script src="js/instanceValid.js"></script>
 <script src="./js/main.js"></script>
 <script src="./js/index.js"></script>
-<script src="js/renderView.js"></script>
 </body>
 </html>

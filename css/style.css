@@ -5,6 +5,7 @@
 }
 
 h2,h3{
+    padding-top: 20px;
     color: dimgray;
 }
 div > h2{
@@ -38,6 +39,7 @@ button{
 }
 button:hover{
     background: rgb(53, 167, 110);
+    cursor: pointer;
 }
 button:active{
     background: rgb(33,147,90);
@@ -52,57 +54,84 @@ button:active{
 .data{
     display: flex;
     justify-content: space-around;
+    width: 100%;
 }
+
 .person{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 300px;
-    height: 350px;
+    width: 350px;
+    height: 300px;
     border: 1px solid #cecece;
     border-radius: 3px;
     text-align: center;
     margin: 10px;
 }
 .person > input{
-    width: 220px;
-    margin-top: 10px;
+    width: 280px;
 }
+
+.person > input:first-child{
+    margin-top: 20px;
+}
+
 .person > button{
     width: 100%;
-    margin-top: 5px;
+
     border-radius: 0 0 3px 3px;
 }
 
 .configurations{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
+    justify-content: center;
     border: 1px solid #cecece;
     border-radius: 3px;
     text-align: center;
     margin: 10px;
-    height: 350px;
+    height: 300px;
+
 }
+
+.configurations > div {
+    width: 30%;
+
+}
+
+.new-str {
+    width: 100%;
+    flex-grow: 2;
+}
+
 .configurations input{
     width: 250px;
-    margin-top: 20px;
+    margin-top: 10px;
+}
+
+.configurations > button{
+    width: 200px;
+    heigth: 100px;
+    flex-grow: 0.8;
+
 }
 
 .police__configurations{
     display: flex;
     flex-direction: column;
-    margin-right: 5px;
+
 }
 .health__configurations{
     display: flex;
     flex-direction: column;
-    margin-right: 5px;
+
 }
 .bank__configurations{
     display: flex;
     flex-direction: column;
-    margin-right: 5px;
+
 }
 .instances{
     display: flex;
@@ -110,7 +139,7 @@ button:active{
     margin-top: 30px;
     justify-content: space-around;
 }
-.arrow{
+/*.arrow{
     height:10px;
     background:green;
     color:#fff;
@@ -136,7 +165,7 @@ button:active{
     border-radius: 50%;
     background-color: green;
     margin-left: 10px;
-}
+}*/
 .name{
     margin-left: 20px;
     margin-right: 10px;
@@ -154,6 +183,18 @@ button:active{
 .namePerson > div{
     height: 32px;
 }
+.check-w{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: #fff198;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 30px;
+    color: #fff198;
+}
+
 .check{
     width: 30px;
     height: 30px;
@@ -165,6 +206,7 @@ button:active{
     line-height: 30px;
     color: white;
 }
+
 .check-no{
     width: 30px;
     height: 30px;
@@ -179,4 +221,14 @@ button:active{
 .police .check:nth-child(2){
     margin-left: 3px;
     margin-right: 3px;
+}
+.police .check-no:nth-child(2){
+    margin-left: 3px;
+    margin-right: 3px;
+}
+.medecin .check:nth-child(2){
+    margin-left: 3px;
+}
+.medecin .check-no:nth-child(2){
+    margin-left: 3px;
 }
